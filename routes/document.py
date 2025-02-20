@@ -12,19 +12,21 @@ class Document(BaseModel):
     doc_pages:int
     doc_fecha: str
     doc_status: str
+    doc_contenido:str
 
 document_list = [
-    Document(doc_nombre="Laser Lemonade Machine", doc_tipo="Técnico", doc_proceso="Categoría 1", doc_precision=97, doc_pages=25, doc_fecha="2024-07-12 10:42 AM", doc_status="finalizado"),
-    Document(doc_nombre="Hypernova Headphones", doc_tipo="Factura", doc_proceso="Categoría 2", doc_precision=98, doc_pages=2, doc_fecha="2024-8-18 03:21 PM", doc_status="finalizado"),
-    Document(doc_nombre="AeroGlow Desk Lamp", doc_tipo="Técnico", doc_proceso="Categoría 3", doc_precision=94, doc_pages=30, doc_fecha="2023-11-29 08:15 AM", doc_status="finalizado"),
-    Document(doc_nombre="TechTonic Energy Drink", doc_tipo="Pedido", doc_proceso="Categoría 1", doc_precision=100, doc_pages=7, doc_fecha="2023-12-25 11:59 PM", doc_status="progreso"),
-    Document(doc_nombre="Gamer Gear Pro Controller", doc_tipo="Ticket", doc_proceso="Categoría 4", doc_precision=99, doc_pages=5, doc_fecha="2024-01-01 12:00 AM", doc_status="finalizado"),
-    Document(doc_nombre="Luminous VR Headset", doc_tipo="Ticket", doc_proceso="Categoría 6", doc_precision=97, doc_pages=3, doc_fecha="2024-02-14 02:14 PM", doc_status="progreso"),
-    Document(doc_nombre="Quantum Keyboard", doc_tipo="Ticket", doc_proceso="Categoría 2", doc_precision=100, doc_pages=11, doc_fecha="2023-06-30 09:45 AM", doc_status="finalizado"),
-    Document(doc_nombre="Echo Wireless Mouse", doc_tipo="Técnico", doc_proceso="Categoría 1", doc_precision=100, doc_pages=20, doc_fecha="2023-08-10 10:30 AM", doc_status="progreso"),
-    Document(doc_nombre="Neon Flex Monitor Stand", doc_tipo="Pedido", doc_proceso="Categoría 1", doc_precision=100, doc_pages=4, doc_fecha="2023-09-01 02:30 PM", doc_status="progreso"),
-    Document(doc_nombre="Aurora RGB Speakers", doc_tipo="Factura", doc_proceso="Categoría 10", doc_precision=100, doc_pages=10, doc_fecha="2023-11-20 01:15 PM", doc_status="finalizado")
+    Document(doc_nombre="Laser Lemonade Machine", doc_tipo="Técnico", doc_proceso="Categoría 1", doc_precision=97, doc_pages=25, doc_fecha="2024-07-12 10:42 AM", doc_status="acabado",doc_contenido="Tablas y texto"),
+    Document(doc_nombre="Hypernova Headphones", doc_tipo="Factura", doc_proceso="Categoría 2", doc_precision=98, doc_pages=2, doc_fecha="2024-8-18 03:21 PM", doc_status="acabado",doc_contenido="Tablas"),
+    Document(doc_nombre="AeroGlow Desk Lamp", doc_tipo="Técnico", doc_proceso="Categoría 3", doc_precision=94, doc_pages=30, doc_fecha="2023-11-29 08:15 AM", doc_status="acabado",doc_contenido="Texto"),
+    Document(doc_nombre="TechTonic Energy Drink", doc_tipo="Pedido", doc_proceso="Categoría 1", doc_precision=100, doc_pages=7, doc_fecha="2023-12-25 11:59 PM", doc_status="progreso",doc_contenido="Tablas"),
+    Document(doc_nombre="Gamer Gear Pro Controller", doc_tipo="Ticket", doc_proceso="Categoría 4", doc_precision=99, doc_pages=5, doc_fecha="2024-01-01 12:00 AM", doc_status="acabado",doc_contenido="Texto"),
+    Document(doc_nombre="Luminous VR Headset", doc_tipo="Ticket", doc_proceso="Categoría 6", doc_precision=97, doc_pages=3, doc_fecha="2024-02-14 02:14 PM", doc_status="progreso",doc_contenido="Tablas"),
+    Document(doc_nombre="Quantum Keyboard", doc_tipo="Ticket", doc_proceso="Categoría 2", doc_precision=100, doc_pages=11, doc_fecha="2023-06-30 09:45 AM", doc_status="acabado",doc_contenido="Texto"),
+    Document(doc_nombre="Echo Wireless Mouse", doc_tipo="Técnico", doc_proceso="Categoría 1", doc_precision=100, doc_pages=20, doc_fecha="2023-08-10 10:30 AM", doc_status="progreso",doc_contenido="Tablas y Texto"),
+    Document(doc_nombre="Neon Flex Monitor Stand", doc_tipo="Pedido", doc_proceso="Categoría 1", doc_precision=100, doc_pages=4, doc_fecha="2023-09-01 02:30 PM", doc_status="progreso",doc_contenido="Texto"),
+    Document(doc_nombre="Aurora RGB Speakers", doc_tipo="Factura", doc_proceso="Categoría 10", doc_precision=100, doc_pages=10, doc_fecha="2023-11-20 01:15 PM", doc_status="acabado",doc_contenido="Tablas")
 ]
+
 
 
 @router.get("/documentos")
@@ -68,5 +70,5 @@ def contar_paginas(document_list):
     return total_paginas
 
 def contar_finalizados(document_list):
-    total_finalizados = sum(1 for document in document_list if document.doc_status == "finalizado")
+    total_finalizados = sum(1 for document in document_list if document.doc_status == "acabado")
     return total_finalizados

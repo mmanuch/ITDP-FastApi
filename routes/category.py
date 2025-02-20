@@ -13,6 +13,10 @@ class CategorySymbol(BaseModel):
     cat_name: str
     cat_status: str
 
+class CategoryDocument(BaseModel):
+    cat_name: str
+    cat_status: str
+
 category_list = [
     Category(cat_id=101, cat_name="Category 1", cat_description="Description for Category 1", cat_status="hecho"),
     Category(cat_id=102, cat_name="Category 2", cat_description="Description for Category 2", cat_status="nuevo"),
@@ -27,13 +31,22 @@ category_list = [
 ]
 
 category_list_symbol = [
-    CategorySymbol(cat_name="Uno", cat_status="hecho"),
-    CategorySymbol(cat_name="Dos", cat_status="hecho"),
-    CategorySymbol(cat_name="Tres", cat_status="nuevo"),
-    CategorySymbol(cat_name="Cuatro", cat_status="nuevo"),
-    CategorySymbol(cat_name="Cinco", cat_status="nuevo"),
-    CategorySymbol(cat_name="Seis", cat_status="hecho"),
+    CategorySymbol(cat_name="Metal", cat_status="hecho"),
+    CategorySymbol(cat_name="Fontanería", cat_status="hecho"),
+    CategorySymbol(cat_name="Electricidad", cat_status="nuevo"),
+    CategorySymbol(cat_name="Arquitectura", cat_status="nuevo"),
 ]
+
+
+category_list_document= [
+    CategoryDocument(cat_name="Legal", cat_status="hecho"),
+    CategoryDocument(cat_name="Técnico", cat_status="hecho"),
+    CategoryDocument(cat_name="Finanzas", cat_status="hecho"),
+]
+
+@router.get("/categories/documents")
+async def categories():
+    return category_list_document
 
 @router.get("/categories/symbols")
 async def categories():
@@ -42,6 +55,8 @@ async def categories():
 @router.get("/categories")
 async def categories():
     return category_list
+
+
 
 @router.get("/category/name")
 async def category():
